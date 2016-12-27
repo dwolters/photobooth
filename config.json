@@ -1,0 +1,8 @@
+{
+  "maxSize": 1680,
+  "publicDir": "./public",
+  "picturesDir": "./pictures",
+  "smallPicturesDir": "./pictures/small",
+  "smallPrefix": "small_",
+  "port": 8080
+}

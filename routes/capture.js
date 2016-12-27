@@ -42,7 +42,6 @@ function capture() {
                 console.log('Standard Output: ' + stdout);
             }
             if (error) {
-                console.log('Error while capturing picture:', error);
                 if(stderr) {
                     console.error('Error Output:', stderr);
                 }
@@ -57,7 +56,10 @@ function capture() {
 router.get('/', (req, res) => {
     capture()
         .then((filename) => res.end(filename))
-        .catch(() => res.status(500).end('error'));
+        .catch((err) => {
+            console.log('Error while capturing picture', err);
+            res.status(500).end(err.message);
+        });
 });
 
 module.exports = router;

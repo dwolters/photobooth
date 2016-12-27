@@ -24,7 +24,6 @@ function convert(filename) {
                 console.log('Standard Output:', stdout);
             }
             if (error) {
-                console.log('Error while converting picture:', error);
                 if(stderr) {
                     console.error('Error Output:', stderr);
                 }
@@ -40,7 +39,10 @@ router.get('/', (req, res) => {
     let filename = req.query.file; // must be extracted from the request
     convert(filename)
         .then((filename) => res.end(filename))
-        .catch(() => res.status(500).end('error'));
+        .catch((err) => {
+            console.log('Error while converting picture:', err);
+            res.status(500).end(err.message);
+        });
 });
 
 module.exports = router;

@@ -88,7 +88,8 @@ function run() {
 /**
  * Display the error screen.
  */
-function error() {
+function showError(jqXHR) {
+    console.error(jqXHR.responseText);
     running = false;
     $('#picture1').attr('src', 'gfx/error.png');
     $('#picture1').show();
@@ -105,7 +106,7 @@ function takePicture() {
         running = false;
         $('#smile').fadeOut(fadeTime);
         convertPicture(file);
-    }, error);
+    }, showError);
 }
 
 /**
@@ -120,7 +121,7 @@ function convertPicture(file) {
             $('#wait').fadeOut(fadeTime);
             timeout(updateSlideshowPictures, newPictureTime);
         }
-    }, error);
+    }, showError);
 }
 
 /**
@@ -153,7 +154,7 @@ function updateSlideshowPictures() {
         pictures = data;
         $('#picture2').attr('src', getRandomPicture());
         timeout(runSlideshow, slideshowTime);
-    }, error);
+    }, showError);
 }
 
 // Start slideshow and add event handlers when DOM is loaded.

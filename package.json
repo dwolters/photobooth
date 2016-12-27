@@ -1,0 +1,23 @@
+{
+  "name": "photobooth",
+  "description": "Photobooth based on gphoto2 and epeg",
+  "version": "1.0.0",
+  "private": true,
+  "bin": "./photobooth.js",
+  "scripts": {
+    "lint": "eslint --fix *.js routes/*.js"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "finalhandler": "^0.4.1",
+    "fs-promise": "^1.0.0",
+    "is-directory": "^0.3.1",
+    "is-file": "^1.0.0",
+    "jquery": "^3.1.1",
+    "serve-static": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-config-google": "^0.7.1"
+  }
+}

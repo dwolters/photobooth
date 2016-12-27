@@ -1,0 +1,49 @@
+{
+  //Use the recommended code guidelines
+  "extends": [
+    "eslint:recommended",
+    "google"
+  ],
+  "parserOptions": {
+    //Enable ES6 support
+    "ecmaVersion": 6,
+    "es6": true
+  },
+  "env": {
+    //Set the environment to node
+    "node": true,
+    "mocha": true,
+    "browser": true,
+    "jquery": true
+  },
+  "globals": {
+    "Promise": true
+  },
+  "rules": {
+    //Allow console statements
+    "no-console": 0,
+    //Ignore linebreak-style. Git does a proper conversion.
+    "linebreak-style": 0,
+    //Only use single quotes
+    "curly": [
+      "error",
+      "all"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "max-len": [
+      "error",
+      200
+    ],
+    "new-cap": [
+      "error",
+      {
+        "capIsNewExceptions": [
+          "Router"
+        ]
+      }
+    ]
+  }
+}

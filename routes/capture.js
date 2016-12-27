@@ -35,7 +35,7 @@ function capture() {
     return new Promise((resolve, reject) => {
         let filename = createFilename();
         console.log('Taking Picture');
-        let cmd = 'sudo gphoto2 --capture-image-and-download --filename="' + path.join(picDir, filename) + '"';
+        let cmd = 'gphoto2 --capture-image-and-download --filename="' + path.join(picDir, filename) + '"';
         console.log('gphoto2 command:', cmd);
         exec(cmd, (error, stdout, stderr) => {
             if (stdout) {

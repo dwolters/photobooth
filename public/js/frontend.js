@@ -114,7 +114,7 @@ function takePicture() {
  * @param {string} file Name of the file to be converted
  */
 function convertPicture(file) {
-    $.get('/convert', {file: file}).then(function(convertedFile) {
+    $.get('/convert', {file: file, size: Math.ceil($('#gallery').width())}).then(function(convertedFile) {
         if (!running) {
             $('#picture1').attr('src', picDir + convertedFile);
             $('#picture2').attr('src', picDir + convertedFile);

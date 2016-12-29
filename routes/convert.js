@@ -8,16 +8,16 @@ let router = express.Router();
 let picDir = path.resolve(config.picturesDir);
 let smallPicDir = path.resolve(config.smallPicturesDir);
 let smallPrefix = config.smallPrefix;
-let maxSize = config.maxSize;
 
 /**
  * Creates a picture with a lower resolution.
  * @param {string} filename Filename of the picture to be scaled
+ * @param {number} size Maximum size of the image in pixel
  * @return {Promise} Resolves to the filename of the scaled image
  */
-function convert(filename) {
+function convert(filename, size) {
     return new Promise((resolve, reject) => {
-        let cmd = 'epeg --max=' + maxSize + ' ' + path.join(picDir, filename) + ' ' + path.join(smallPicDir, smallPrefix + filename);
+        let cmd = 'epeg --max=' + size + ' ' + path.join(picDir, filename) + ' ' + path.join(smallPicDir, smallPrefix + filename);
         console.log('epeg command:', cmd);
         exec(cmd, (error, stdout, stderr) => {
             if (stdout) {
@@ -36,8 +36,10 @@ function convert(filename) {
 }
 
 router.get('/', (req, res) => {
-    let filename = req.query.file; // must be extracted from the request
-    convert(filename)
+    let filename = req.query.file;
+    let size = req.query.size;
+	console.log('size:', size);
+    convert(filename, size)
         .then((filename) => res.end(filename))
         .catch((err) => {
             console.log('Error while converting picture:', err);

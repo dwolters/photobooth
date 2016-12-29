@@ -1,27 +1,27 @@
 /* Configuration variables */
-var delayTime = 300; // Delay between countdown steps
-var fadeTime = 700; // Specifies the fade time for countdown steps, errors, the waiting, loading, and the smile screen.
-var slideshowFadeTime = 3000; // Specifies the fading time of slideshow pictures
-var slideshowTime = 8000; // Specifies how long a random picture is shown
-var newPictureTime = 12000; // Specifies how long a newly taken picture is shown
-var showStartPictureInterval = 5; // Interval until the start picture shall be shown. Set to 0 to disable start picture.
-var slideshow = true; // Enables/Disables slide show
+let delayTime = 300; // Delay between countdown steps
+let fadeTime = 700; // Specifies the fade time for countdown steps, errors, the waiting, loading, and the smile screen.
+let slideshowFadeTime = 3000; // Specifies the fading time of slideshow pictures
+let slideshowTime = 8000; // Specifies how long a random picture is shown
+let newPictureTime = 12000; // Specifies how long a newly taken picture is shown
+let showStartPictureInterval = 5; // Interval until the start picture shall be shown. Set to 0 to disable start picture.
+let slideshow = true; // Enables/Disables slide show
 
 /* Internal variables - DO NOT ALTER */
 // Countdown boxes to be shown
-var countdown = ['#countdown3', '#countdown2', '#countdown1'];
+let countdown = ['#countdown3', '#countdown2', '#countdown1'];
 // Indicates whether a picture is being taken
-var running = false;
+let running = false;
 // All slideshow pictures (automatically filled by updateSlideshowPictures()
-var pictures = [];
+let pictures = [];
 // Toggle defining if picture 1 or 2 should be shown
-var slideshowToggle = true;
+let slideshowToggle = true;
 // Counter for the number of shown random pictures
-var randomPictureCounter = 0;
+let randomPictureCounter = 0;
 // Active timeout
-var timeoutHandle;
+let timeoutHandle;
 // Default picture path
-var picDir = 'pictures/';
+let picDir = 'pictures/';
 
 /**
  * Stops previous timeouts and sets a new timeout for the given callback.
@@ -87,6 +87,7 @@ function run() {
 
 /**
  * Display the error screen.
+ * @param {Object} jqXHR jQuery ajax response object containing the error message
  */
 function showError(jqXHR) {
     console.error(jqXHR.responseText);
